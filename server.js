@@ -54,6 +54,10 @@ app.get('/css/ionicons.css', function(req,res){
   res.sendFile(path.join(__dirname + '/node_modules/ionicons/dist/css/ionicons.css'))
 });
 
+app.get('/css/cardsresponsive.css', function(req,res){
+  res.sendFile(path.join(__dirname + '/cardsresponsive.css'))
+});
+
 app.get('/fonts/ionicons.eot', function(req,res){
   res.sendFile(path.join(__dirname + '/node_modules/ionicons/dist/fonts/ionicons.eot'))
 });

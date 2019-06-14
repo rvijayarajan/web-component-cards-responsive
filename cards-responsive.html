@@ -1,48 +1,60 @@
 <div class="card">
-  	<div class="card-header">
-	    <ul class="nav nav-tabs card-header-tabs">
-	      <li class="nav-item">
-	        <a class="nav-link active" href="#">Active</a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" href="#">Link</a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+  	<div class="card-header d-flex justify-content-between">
+	    <ul class="nav nav-tabs card-header-tabs" >
+	      <li ng-repeat="item in $ctrl.config track by $index" class="nav-item">
+	      	<a href="#" ng-click="$ctrl.selectedNav=item.nav.name" class="nav-link" ng-class="{'active': $ctrl.selectedNav===item.nav.name, 'disabled': item.nav.disabled===true}">{{item.nav.tabTitle}}</a>
 	      </li>
 	    </ul>
+	    <div ng-if="$ctrl.config[$ctrl.selectedNav].headerText">
+		    {{$ctrl.config[$ctrl.selectedNav].headerText}}
+	  	</div>
   	</div>
   	<div class="card-body">
-  		<ul class="list-group list-group-flush">
-	    	<li class="list-group-item">Cras justo odio</li>
-	    	<li class="list-group-item">Dapibus ac facilisis in</li>
-	    	<li class="list-group-item">Vestibulum at eros</li>
-	  	</ul>
-  		<!-- <img src="..." class="card-img-top" alt="...">
-  		<h5 class="card-title">Card title</h5>
-    	<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-    	<p class="card-text">This is some text within a card body.</p>
-    	<a href="#" class="card-link">Card link</a>
-    	<a href="#" class="card-link">Another link</a>
-    	<img src="..." class="card-img-top" alt="..."> -->
+  		<img src="{{$ctrl.config[$ctrl.selectedNav].topImage}}" class="card-img-top" alt="Top Image Unavailable. Please check source url." ng-if="$ctrl.config[$ctrl.selectedNav].topImage">
+	  	<h5 class="card-title" ng-if="$ctrl.config[$ctrl.selectedNav].title">{{$ctrl.config[$ctrl.selectedNav].title}}</h5>
+	    <h6 class="card-subtitle mb-2 text-muted" ng-if="$ctrl.config[$ctrl.selectedNav].subTitle">{{$ctrl.config[$ctrl.selectedNav].subTitle}}</h6>
+	    <p class="card-text" ng-if="$ctrl.config[$ctrl.selectedNav].bodyText">{{$ctrl.config[$ctrl.selectedNav].bodyText}}</p>
+	    <a href="{{link.href}}" class="card-link" ng-repeat="link in $ctrl.config[$ctrl.selectedNav].cardLinks track by $index" ng-if="$ctrl.config[$ctrl.selectedNav].cardLinks.length>0">{{link.text}}</a>
+	    <img src="{{$ctrl.config[$ctrl.selectedNav].bottomImage}}" class="card-img-top" alt="Bottom Image Unavailable. Please check source url." ng-if="$ctrl.config[$ctrl.selectedNav].bottomImage">
+	    <ul class="list-group list-group-flush" ng-if="$ctrl.config[$ctrl.selectedNav].cardDetails.length>0">
+	    	<li class="list-group-item" ng-repeat="detail in $ctrl.config[$ctrl.selectedNav].cardDetails track by $index">{{detail.text}}</li>
+	    </ul>
   	</div>
-  	<div class="card-footer text-muted">
-    	2 days ago
+  	<div class="card-footer text-muted" ng-if="$ctrl.config[$ctrl.selectedNav].footerText">
+    	{{$ctrl.config[$ctrl.selectedNav].footerText}}
   	</div>
 </div>
   	
 <div class="card mb-3">
+	<div class="card-header" ng-if="$ctrl.config[$ctrl.selectedNav].headerText">
+	    {{$ctrl.config[$ctrl.selectedNav].headerText}}
+  	</div>
 	<div class="row no-gutters">
 	    <div class="col-md-4">
-	      <img src="..." class="card-img" alt="...">
+	    	<div class="card-header text-center pr-0">
+	    		<ul class="nav nav-tabs card-header-tabs d-flex flex-column mr-0">
+			      <li ng-repeat="item in $ctrl.config track by $index" class="nav-item">
+			      	<a href="" ng-click="$ctrl.selectedNav=item.nav.name" class="nav-link tabResponsive" ng-class="{'active': $ctrl.selectedNav===item.nav.name, 'disabled': item.nav.disabled===true}">{{item.nav.tabTitle}}</a>
+			      </li>
+			    </ul>
+	    	</div>
 	    </div>
 	    <div class="col-md-8">
 	      <div class="card-body">
-	        <h5 class="card-title">Card title</h5>
-	        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-	        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+	        <img src="{{$ctrl.config[$ctrl.selectedNav].topImage}}" class="card-img-top" alt="Top Image Unavailable. Please check source url." ng-if="$ctrl.config[$ctrl.selectedNav].topImage">
+		  	<h5 class="card-title" ng-if="$ctrl.config[$ctrl.selectedNav].title">{{$ctrl.config[$ctrl.selectedNav].title}}</h5>
+		    <h6 class="card-subtitle mb-2 text-muted" ng-if="$ctrl.config[$ctrl.selectedNav].subTitle">{{$ctrl.config[$ctrl.selectedNav].subTitle}}</h6>
+		    <p class="card-text" ng-if="$ctrl.config[$ctrl.selectedNav].bodyText">{{$ctrl.config[$ctrl.selectedNav].bodyText}}</p>
+		    <a href="{{link.href}}" class="card-link" ng-repeat="link in $ctrl.config[$ctrl.selectedNav].cardLinks track by $index" ng-if="$ctrl.config[$ctrl.selectedNav].cardLinks.length>0">{{link.text}}</a>
+		    <img src="{{$ctrl.config[$ctrl.selectedNav].bottomImage}}" class="card-img-top" alt="Bottom Image Unavailable. Please check source url." ng-if="$ctrl.config[$ctrl.selectedNav].bottomImage">
+		    <ul class="list-group list-group-flush" ng-if="$ctrl.config[$ctrl.selectedNav].cardDetails.length>0">
+		    	<li class="list-group-item" ng-repeat="detail in $ctrl.config[$ctrl.selectedNav].cardDetails track by $index">{{detail.text}}</li>
+		    </ul>
 	      </div>
 	    </div>
 	  </div>
+	  <div class="card-footer text-muted" ng-if="$ctrl.config[$ctrl.selectedNav].footerText">
+	    	{{$ctrl.config[$ctrl.selectedNav].footerText}}
+	  	</div>
 	</div>
 </div>

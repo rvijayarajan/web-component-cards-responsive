@@ -5,6 +5,8 @@
 	app.component("wcCardsResponsive", {
 		templateUrl: "cards-responsive.html",
 		bindings: {
+			config: "<cardsConfig",
+			pills: "<"
 		},
 		controller: "CardsResponsiveController"
 	});
@@ -16,6 +18,7 @@
 	function CardsResponsiveControllerFn($scope) {
 
 		var vm = $scope.$ctrl;
+		vm.selectedNav = 0;
 	}
 
 })();

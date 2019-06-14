@@ -1,0 +1,14 @@
+.tabResponsive {
+	border-top-left-radius: 0.25rem !important;
+  	border-bottom-left-radius: 0.25rem !important;	
+  	border-top-right-radius: 0 !important;
+  	border-bottom-right-radius: 0 !important;
+}
+
+.tabResponsive.active {
+	border-color: #dee2e6 #fff #dee2e6 #dee2e6 !important;	
+}
+
+.tabResponsive:hover, .tabResponsive:focus {
+	border-color: #e9ecef #fff #e9ecef #e9ecef !important;		
+}
