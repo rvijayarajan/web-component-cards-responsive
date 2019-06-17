@@ -1,4 +1,4 @@
-<div class="card">
+<div class="card" ng-class="{'d-block d-md-none': $ctrl.fixedTopTabs!=='Y', 'd-block': $ctrl.fixedTopTabs==='Y'}">
   	<div class="card-header d-flex justify-content-between">
 	    <ul class="nav nav-tabs card-header-tabs" >
 	      <li ng-repeat="item in $ctrl.config track by $index" class="nav-item">
@@ -25,7 +25,7 @@
   	</div>
 </div>
   	
-<div class="card mb-3">
+<div class="card mb-3" ng-class="{'d-none d-md-block': $ctrl.fixedTopTabs!=='Y', 'd-none': $ctrl.fixedTopTabs==='Y'}">
 	<div class="card-header" ng-if="$ctrl.config[$ctrl.selectedNav].headerText">
 	    {{$ctrl.config[$ctrl.selectedNav].headerText}}
   	</div>

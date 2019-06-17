@@ -6,7 +6,8 @@
 		templateUrl: "cards-responsive.html",
 		bindings: {
 			config: "<cardsConfig",
-			pills: "<"
+			pills: "<",
+			fixedTopTabs: "@"
 		},
 		controller: "CardsResponsiveController"
 	});
