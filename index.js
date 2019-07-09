@@ -1,6 +1,6 @@
 (function () {
 
- 	var app = angular.module("wcCardsResponsive",[]);
+ 	var app = angular.module("wcCardsResponsive",["wcCardsResponsiveTemplates"]);
 
 	app.component("wcCardsResponsive", {
 		templateUrl: "cards-responsive.html",
